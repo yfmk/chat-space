@@ -1,0 +1,35 @@
+.Header
+  .Header__left
+    .Header__left--user
+      user&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+      =fa_icon "edit"
+      =fa_icon "cog"
+  .Header__right
+    .Header__right--group
+      group
+    .Header__right--member
+      member
+    %p.Header__right--edit
+      Edit
+
+
+
+.Contents
+  .Contents__left
+    .Contents__left--group
+      group
+    .Contents__left--message
+      message
+  .Contents__right
+    
+
+  %form#message{accept: {charset: "UTF-8"}, enctype: "multipart/form-data", method: "post"}
+    .input-box
+      %input#message_content{name: "message", placeholder: "type a message", type: "text"}/
+      %label.input-box__image{for: "message_image"}
+        %i.fa.fa-image
+      %input#message_image.input-box__image__file{name: "message[image]", type: "file"}/
+    %input.submit{"data": "Send", name: "commit", type: "submit", value: "Send"}/
+
+    
+  
