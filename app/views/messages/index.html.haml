@@ -1,37 +1,21 @@
-.messages
-  = render @messages
-
-.Header
-  .Header__left
-    .Header__left--user
-      user&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-      =fa_icon "edit"
-      =fa_icon "cog"
-  .Header__right
-    .Header__right--group
-      group
-    .Header__right--member
-      member
-    %p.Header__right--edit
-      Edit
-
-
-
-.Contents
-  .Contents__left
-    .Contents__left--group
-      group
-    .Contents__left--message
-      message
-  .Contents__right
-    
-
-  .form
-    = form_for [@group, @message] do |f|
-      = f.text_field :content, class: 'form__message', placeholder: 'type a message'
-      .form__mask
-        = f.label :image, class: 'form__mask__image' do
+/ = render partial: "headMessage"
+= render partial: "shared/side_bar"
+.main-contents
+  .main-contents__header
+    .main-contents__header__group
+      = @group.name
+      .main-contents__header__group__edit
+        edit
+    .main-contents__header__members
+      メンバー
+  .main-contents__body
+    .main-contents__body__list
+      = render partial: 'message', collection: @messages
+  .main-contents__footer
+    .form
+      = form_for [@group, @message] do |f|
+        = f.text_field :content, class: 'message', placeholder: 'type a message'
+        = f.label :image, class: '#message_image' do
           = fa_icon 'picture-o', class: 'icon'
           = f.file_field :image, class: 'hidden'
-      = f.submit 'Send', class: 'form__submit'
-  
+          = f.submit 'Send', class: 'submit' 
