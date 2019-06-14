@@ -5,9 +5,13 @@
     .main-contents__header__group
       = @group.name
       .main-contents__header__group__edit
-        edit
+        = link_to edit_group_path(@group.id) do
+          Edit
     .main-contents__header__members
-      メンバー
+      Member：
+      %li.member
+        - @group.group_users.each do |group_user|
+          = group_user.user.name
   .main-contents__body
     .main-contents__body__list
       = render partial: 'message', collection: @messages

@@ -37,6 +37,7 @@
       margin: 0;
       padding: 0;
       font-size: 13px;
+      list-style: none;
     }
   }
 
@@ -93,6 +94,7 @@
     }
 
     .chat-group-user__btn {
+      float: right;
       display: inline-block;
       cursor: pointer;
 
