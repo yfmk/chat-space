@@ -12,8 +12,19 @@ class UsersController < ApplicationController
     end
   end
 
+  def index
+    @users = User.where('name LIKE(?)', "%#{params[:name]}%" ).where("id NOT IN (#{current_user.id})")
+    respond_to do |format|
+      format.html
+      format.json
+    end
+  end
+
   private
   def user_params
     params.require(:user).permit(:name, :email)
   end
 end
+
+
+  
